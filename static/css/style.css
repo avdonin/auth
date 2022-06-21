@@ -1,0 +1,97 @@
+
+body, html {
+    background-color: #fefefe;
+    margin: 0px;
+    height: 100%;
+    font-family: Poppins-Regular, sans-serif;
+}
+
+/* Add a black background color to the top navigation */
+.header {
+  height: 80px;
+  background-color: #fff;
+  overflow: hidden;
+  box-shadow: 0 0px 10px 0px rgba(0, 0, 0, 0.2);
+}
+
+.organization-title {
+    width: 50%;
+    height: 100%;
+    font-size: 39px;
+    padding: 20px;
+    float: left;
+}
+
+/* Style the links inside the navigation bar */
+.header .menu {
+  height: 80px;
+  float: right;
+  color: #000;
+  margin: 0;
+  padding: 0px 10px 0 0;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+/* Change the color of links on hover */
+.header .menu:hover {
+  background-color: #eeeeee;
+  color: black;
+}
+
+/* Add a color to the active/current link */
+.header .menu.active {
+  background-color: #aaa;
+  color: white;
+}
+
+.header .menu .top_profile_name {
+    position: relative;
+    margin: 32px 3px 32px 27px;
+    float: left;
+    font-size: 20px;
+    vertical-align: text-bottom;
+}
+
+.header img {
+    float: right;
+    width: 50px;
+    height: 50px;
+    margin: 17px;
+    background-color: #ddd;
+    border-radius: 50%;
+}
+
+
+.menu-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.visible {display:block;}
+
+.container {
+    display: table;
+    float: left;
+    max-width: 50%;
+    background-color: #fff;
+    margin: 20px 0px 0px 20px;
+    padding: 10px;
+    box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.2);
+}
+
+.container-title {
+    display: table;
+    font-size: 30px;
+    margin: 5px 15px 15px 15px;
+}
+
+.container-content {
+    margin: 15px;
+}
+
+

@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extrahead %}
+    <link rel="stylesheet" type="text/css" href="{% static 'registration/style.css' %}">
+{% endblock %}
+
+{% block title %}Registration{% endblock %}
+
+{% block content %}
+    <div class="limiter">
+        <div class="container-login100" style="">
+            <div class="wrap-login100 p-l-110 p-r-110 p-t-62 p-b-33">
+                <form autocomplete="off" class="login100-form validate-form flex-sb flex-w" method="post">
+                    {% csrf_token %}
+                    <span class="login100-form-title p-b-53">
+                        Registration
+                    </span>
+        
+                    {% if form.errors %}
+                        {% for key, value in form.errors.items %} 
+                            <div class="validate-input" role="alert">
+                            {% if key == 'username' %} Телефон или почта {%endif%}
+                            {% if key == 'password1' %} Пароль {%endif%}
+                            {% if key != '__all__' %}<!--{{ key }}--> — {% endif %}{{ value | striptags }}
+                                {% for error in field.errors %}
+                                <p style="color: red">{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                    {% endfor %}
+                    {% endif %}  
+
+                    <div class="wrap-input100 validate-input" data-validate = "Email required">
+                        <input class="input100" type="text" name={{ form.email.html_name }} placeholder="Email">
+                        <span class="focus-input100"></span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-validate = "Username required">
+                        <input class="input100" type="text" name={{ form.first_name.html_name }} placeholder="First name">
+                        <span class="focus-input100"></span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-validate = "Username required">
+                        <input class="input100" type="text" name={{ form.last_name.html_name }} placeholder="Last name">
+                        <span class="focus-input100"></span>
+                    </div>
+                    
+                    <div class="wrap-input100 validate-input" data-validate = "Password required">
+                        <input class="input100" type="password" name={{ form.password1.html_name }} placeholder="Password">
+                        <span class="focus-input100"></span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-validate = "Password required">
+                    <input class="input100" type="password" name={{ form.password2.html_name }} placeholder="Repeat password">
+                        <span class="focus-input100"></span>
+                    </div>
+
+                    <div class="container-login100-form-btn m-t-17">
+                        <button class="login100-form-btn" type="submit">
+                            Sign up
+                        </button>
+                    </div>
+
+                     <!-- comment>
+                    <a href="#" class="btn-face m-b-20">
+                        <i class="fa fa-facebook-official"></i>
+                        Facebook
+                    </a>
+                
+                    <a href="#" class="btn-google m-b-20">
+                        <img src="images/icons/icon-google.png" alt="GOOGLE">
+                        Google
+                    </a>
+                    </!-->
+
+                    <div class="w-full text-center p-t-55">
+                        <a href="{% url 'login' %}" class="txt2 bo1">
+                            Log in
+                        </a>
+                        <br>
+                        <a href="{% url 'password_reset' %}" class="txt2 bo1">
+                            Forgotten password?
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

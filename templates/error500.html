@@ -1,0 +1,52 @@
+<!-- templates/home.html -->
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extrahead %}
+    <style type="text/css"> 
+*{
+    transition: all 1s;
+}
+
+html {
+    height: 100%;
+}
+
+body{
+    font-family: 'Lato', sans-serif;
+    color: #888;
+    margin: 0;
+}
+
+#main{
+    display: table;
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+}
+
+.fof{
+      display: table-cell;
+      vertical-align: middle;
+}
+
+.fof h1{
+      font-size: 50px;
+      display: inline-block;
+      padding-right: 12px;
+}
+
+</style>
+{% endblock %}
+
+{% block title %}Ошибка 500{% endblock %}
+
+{% block content %}
+    <div id="main">
+        <div class="fof">
+            <h1>Ошибка 500</h1>
+            <h2>Внутренная ошибка сервера</h2>
+        </div>
+    </div>
+{% endblock %}

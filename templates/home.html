@@ -1,0 +1,43 @@
+<!-- templates/home.html -->
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extrahead %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+{% endblock %}
+
+{% block title %}{{ user.first_name }} {{ user.last_name }}{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+  <div class="header">
+  <span class="organization-title"> 
+    <font color="black">Successful</font> <font color="blue">auth</font><font color="red">entication</font> 
+  </span>
+  <!--<script type="text/javascript" src="{% static 'js/menu.js' %}"></script> -->
+  <a id="menu" class="menu" href="{% url 'logout' %}">
+    <div class="top_profile_name" > {{ user.first_name }} {{ user.last_name }} </div> 
+    <img class="profile_image" src="{% static 'images/default_avatar.png' %}" alt="Avatar" >
+  </a>
+</div>
+
+<div class="container">
+  <span class="container-title">Courses</span>
+  <div class="container-content">
+    Hi {{ user.first_name }}! <br>
+    <ul>
+    {%for course in courses %}
+        <li> {{ course.title }}</li>
+    {% endfor %}
+    </ul>
+  </div>
+</div>
+
+</div>
+
+{% else %}
+  <p>You are not logged in</p>
+  <a href="{% url 'login' %}">login</a>
+{% endif %}
+{% endblock %}

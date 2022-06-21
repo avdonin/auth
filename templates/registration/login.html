@@ -1,0 +1,75 @@
+<!-- templates/registration/login.html -->
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extrahead %}
+    <link rel="stylesheet" type="text/css" href="{% static 'registration/style.css' %}">
+{% endblock %}
+
+{% block title %}Log in{% endblock %}
+
+{% block content %}
+    <div class="limiter">
+        <div class="container-login100" style="">
+            <div class="wrap-login100 p-l-110 p-r-110 p-t-62 p-b-33">
+                <form class="login100-form validate-form flex-sb flex-w" method="post">
+                    {% csrf_token %}
+                    <span class="login100-form-title p-b-53">
+                     <font color="black">Please enter credidentials for</font><br> 
+                     <font color="blue">auth</font><font color="red">entication</font>
+                    </span>
+        
+                    {% if form.errors %}
+                        {% for key, value in form.errors.items %} 
+                            <div class="validate-input" role="alert">
+                            {% if key == 'username' %} Email or phone {%endif%}
+                            {% if key == 'password' %} Password {%endif%}
+                            {% if key != '__all__' %}<!--{{ key }}--> — {% endif %}{{ value | striptags }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}  
+
+                    <div class="wrap-input100 validate-input" data-validate = "Username required">
+                        <input class="input100" type="text" name={{ form.username.html_name }} placeholder="Email or phone">
+                        <span class="focus-input100"></span>
+                    </div>
+                    
+                    <div class="wrap-input100 validate-input" data-validate = "Password required">
+                        <input class="input100" type="password" name={{ form.password.html_name }} placeholder="Password">
+                        <span class="focus-input100"></span>
+                    </div>
+
+                    <div class="container-login100-form-btn m-t-17">
+                        <button class="login100-form-btn" type="submit">
+                            Log in
+                        </button>
+                    </div>
+
+                     <!-- comment>
+                    <a href="#" class="btn-face m-b-20">
+                        <i class="fa fa-facebook-official"></i>
+                        Facebook
+                    </a>
+                
+                    <a href="#" class="btn-google m-b-20">
+                        <img src="images/icons/icon-google.png" alt="GOOGLE">
+                        Google
+                    </a>
+                    </!-->
+
+                    <div class="w-full text-center p-t-55">
+                        <a href="{% url 'signup' %}" class="txt2 bo1">
+                            Registration
+                        </a>
+                        <br>
+                        <a href="{% url 'password_reset' %}" class="txt2 bo1">
+                            Forgotten password?
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+{% endblock %}
